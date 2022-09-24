@@ -15,50 +15,31 @@ template <typename T> class CircularLinkedList
         Node<T>* cursor = NULL;
         
     public:
-        void Insert(T data)
+        void append(T data)
         {
             Node<T>* newNode = new Node<T>();
             newNode->data = data;
-            if (IsEmpty()) { newNode->next = newNode; }
+
+            if (isEmpty()) { newNode->next = newNode; }
             else {
                 newNode->next = cursor->next;
                 cursor->next = newNode;
             }
+
             cursor = newNode;
             n++;
         }
         
-        void Remove(int index)
-        {
-            Node<T>* p = cursor;
-            int i;
-            for (i = 0; i < index; i++)
-                p = p->next;
-                
-            if (Size() == 1) {
-                cursor = NULL;
-                delete p;
-            } else {
-                Node<T>* removed = p->next;
-                if (Size() - 1 == index)
-                    cursor = p;
-                p->next = removed->next;
-                delete removed;
-            }
-            
-            n--;
-        }
+        int size()     { return n; }
+        bool isEmpty() { return cursor == NULL; }
         
-        int Size()     { return n; }
-        bool IsEmpty() { return cursor == NULL; }
-        
-        T Top() 
+        Node<T>* top() 
         {
             Node<T>* top = cursor->next;
-            return top->data;
+            return top;
         }
 
-        void Print()
+        void print()
         {
             Node<T>* p;
             for (p = cursor->next; p != cursor; p = p->next)
