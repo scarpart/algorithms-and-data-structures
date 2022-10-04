@@ -1,6 +1,9 @@
 # Things I've changed ~art
 # -------
 
+# VSCode
+.vscode
+
 # Java
 *.class
  
