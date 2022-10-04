@@ -1,3 +1,11 @@
+# Things I've changed ~art
+# -------
+
+# Java
+*.class
+ 
+# -------
+
 # Prerequisites
 *.d
 
