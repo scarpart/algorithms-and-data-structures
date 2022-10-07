@@ -9,6 +9,8 @@ int main()
     std::cin >> input;
     
     ep.createTree(input, NULL);
+    printf("Created tree.\n");
+    
     ep.prefix(NULL);
     ep.postfix(NULL);
 
