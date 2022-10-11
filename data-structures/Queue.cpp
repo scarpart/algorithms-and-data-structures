@@ -16,9 +16,9 @@ template <typename T> class Queue
         int n = 0; /* keeps track of the queue size */
 
     public:
-        void Enqueue(T data)
+        void enqueue(T data)
         {
-            if (!IsEmpty()) {
+            if (!isEmpty()) {
                 Node<T>* newNode = new Node<T>();
                 newNode->data = data;
                 newNode->next = last->next;
@@ -32,9 +32,9 @@ template <typename T> class Queue
             n++;
         }
 
-        T Dequeue()
+        T dequeue()
         {
-            if (!IsEmpty()) {
+            if (!isEmpty()) {
                 Node<T>* oldhead = head;
                 T data = oldhead->data;
                 head = oldhead->next;
@@ -43,20 +43,20 @@ template <typename T> class Queue
                 return data;
             }
 
-            return -1;
+            return 0;
         }
 
-        bool IsEmpty()
+        bool isEmpty()
         {
             return (head == NULL);
         }
 
-        int Size()
+        int size()
         {
             return n;
         }
         
-        void Print()
+        void print()
         {
             Node<T>* start;
             for (start = head; start != last; start = start->next)
@@ -65,23 +65,3 @@ template <typename T> class Queue
         }
 
 };
-
-int main()
-{
-    Queue<int> myq;
-    myq.Enqueue(5);
-    myq.Enqueue(10);
-
-    std::cout << "Dequeued value: " << myq.Dequeue() << std::endl;
-    
-    std::cout << "Is myq empty? " << myq.IsEmpty() << std::endl;
-    std::cout << "Size of myq: " << myq.Size() << std::endl;
-    myq.Print();
-
-    return 0;
-}
-
-
-
-
-
