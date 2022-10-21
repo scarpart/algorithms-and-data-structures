@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string.h>
-#include "ExpressionTree.cpp"
+#include "../../data-structures/ExpressionTree.cpp"
 
 int main()
 {
@@ -9,15 +9,7 @@ int main()
     std::cin >> input;
     
     ep.createTree(input, NULL);
-
-    Node* root = ep.getRoot();
-    std::string prefix = "";
-    std::string postfix = "";
-
-    ep.prefix(root, &prefix);
-    ep.postfix(root, &postfix);
-
-    printf("%s\n%s\n", prefix.c_str(), postfix.c_str());
+    printf("%s\n%s\n", ep.prefix().c_str(), ep.postfix().c_str());
 
     return 0;
 }

@@ -26,6 +26,33 @@ class ExpressionTree
             m[i] = operands[i];
         return m;
     }
+    
+    void getPostfix(Node* node, std::string *s)
+    {
+        if (node != NULL) {
+            getPostfix(node->left, s);
+            getPostfix(node->right, s);
+            (*s).append(node->val);
+        } 
+    }
+
+    void getPrefix(Node* node, std::string *s)
+    {     
+        if (node != NULL) {
+            (*s).append(node->val);
+            getPrefix(node->left, s);
+            getPrefix(node->right, s);
+        } 
+    }
+
+    void getInfix(Node* node, std::string *s)
+    {
+        if (node != NULL) {
+            getInfix(node->left, s);
+            (*s).append(node->val);
+            getInfix(node->right, s);
+        }
+    }
 
     public:
 
@@ -64,37 +91,26 @@ class ExpressionTree
         }
 
     }
-        
-    void postfix(Node* node, std::string *s)
+
+    std::string postfix()
     {
-        if (node != NULL) {
-            postfix(node->left, s);
-            postfix(node->right, s);
-            (*s).append(node->val);
-        } 
+        std::string s;
+        getPostfix(root, &s);
+        return s;
     }
 
-    void prefix(Node* node, std::string *s)
-    {     
-        if (node != NULL) {
-            (*s).append(node->val);
-            prefix(node->left, s);
-            prefix(node->right, s);
-        } 
+    std::string prefix()
+    {
+        std::string s;
+        getPrefix(root, &s);
+        return s;
     }
 
-    void infix(Node* node, std::string *s)
+    std::string infix()
     {
-        if (node != NULL) {
-            infix(node->left, s);
-            (*s).append(node->val);
-            infix(node->right, s);
-        }
-    }
-
-    Node* getRoot()
-    {
-        return root;
+        std::string s;
+        getInfix(root, &s);
+        return s;
     }
 
 };
