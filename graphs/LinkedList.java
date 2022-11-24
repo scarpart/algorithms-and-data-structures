@@ -50,6 +50,7 @@ public class LinkedList {
             all[i++] = pivot.val;
         all[i] = tail.val;
 
+        return all;
     }
 
 }
